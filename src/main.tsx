@@ -8,7 +8,7 @@ import {
 import './index.css'
 
 import Root from './routes/root'
-import {routes} from './routes/routes'
+import {routes} from './routes/routes.ts'
 
 const router = createBrowserRouter([
   {
@@ -20,11 +20,11 @@ const router = createBrowserRouter([
         element: <routes.Home/>
       },
       {
-        path:"/p1_strings",
+        path:"p1_strings",
         element: <routes.PStrings/>
       },
       {
-        path:"/p2_lenguages",
+        path:"p2_lenguages",
         element: <routes.PLenguages/>
       },
       {
