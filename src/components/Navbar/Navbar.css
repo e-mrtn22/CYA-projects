@@ -1,12 +1,11 @@
 aside {
   width: 130px;
-  position:absolute;
-  height: 100%;
+  height: 100vh;
   background-color: #5c068c;
   overflow: hidden;
 
   transition: width 0.2s linear;
-  box-shadow: 0 20px 350px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.14);
 }
 
 aside:hover{
@@ -20,10 +19,6 @@ nav {
 }
 
 
-hr {
-  width: 90%;
-}
-
 ol {
   list-style: none;
   display: flex;
@@ -36,9 +31,4 @@ ol {
   background-color: rgba(0, 0, 0, 0.14);
   border-radius: 25px;
   text-align: center;
-}
-
-.autor {
-  position: absolute;
-  bottom: 0;
 }
