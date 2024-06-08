@@ -5,7 +5,6 @@ import './DropdownMenu.css'
 
 export function DropdownMenu() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [selectedProject, setSelectedProject] = useState("Choose project")
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -13,11 +12,6 @@ export function DropdownMenu() {
 
   const closeDropdown = () => {
     setIsDropdownOpen(false)
-  }
-
-  const handleLinkClick = (label:string) => {
-    setSelectedProject(label)
-    closeDropdown()
   }
 
   const menuItems = [
@@ -31,22 +25,31 @@ export function DropdownMenu() {
   ];
 
   return (
-    <nav>
-      <button className='dropdownButton' onClick={toggleDropdown}>
-        {selectedProject}
-      </button>
-      {isDropdownOpen && (
-        <ul className='navbarList'>
-          {menuItems.map((item) => (
-            <li key={item.value} className='navbarItem'>
-              <Link 
-                to={item.value}
-                onClick={() => handleLinkClick(item.label)}
-              >{item.label}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </nav>
+    <>
+      <div className='dropdownContainer'>
+        <div className='showZone'>
+          <label className='dropdownLabel'>Projects</label>
+          <button className='dropdownButton' onClick={toggleDropdown}>
+            {isDropdownOpen ? 'V' : '<'}
+          </button>
+        </div>
+        <nav>
+          {isDropdownOpen && (
+            <ul className='navList'>
+              {menuItems.map((item) => (
+                <Link 
+                  to={item.value}
+                  onClick={() => closeDropdown()}
+                >
+                  <li key={item.value} className='navItem'>
+                  {item.label}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          )}
+        </nav>
+      </div>
+    </>
   );
 }

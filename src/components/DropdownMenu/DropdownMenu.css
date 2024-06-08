@@ -1,20 +1,64 @@
 nav {
-  overflow: hidden;
   width: 100%;
-  margin: 5px 0;
+  height: 100%;
 }
 
+.dropdownContainer {
+  --min-width: 150px;
+  --max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: var(--min-width);
+  width: 100%;
+  max-width: var(--max-width);
+}
 
-ol {
+.dropdownButton {
+  background-color: #00000020;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.dropdownLabel {
+  font-weight: bold;
+}
+
+.navList {
+  overflow-y: scroll;
   list-style: none;
   display: flex;
   flex-direction: column;
-  column-gap: 5px;
+  min-width: var(--min-width);
+  width: 100%;
+  max-width: var(--max-width);
+  height: 90vh;
+  position: fixed;
+  padding: 10px 5px;
 }
 
-.navbarItem {
+.navItem {
+  background-color: #6d3b9a;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: start;
+}
+
+.navItem:hover {
+  background-color: #7a42a5;
+}
+
+.showZone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #7a42a5;
+  color: white;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.14);
-  border-radius: 25px;
-  text-align: center;
 }

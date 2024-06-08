@@ -8,6 +8,8 @@
 header {
   background-color: #5c068c;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow-x: hidden;
   h1 {
     text-align: center;
