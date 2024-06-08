@@ -24,8 +24,8 @@ const router = createBrowserRouter([
         element: <routes.PStrings/>
       },
       {
-        path:"p2_lenguages",
-        element: <routes.PLenguages/>
+        path:"p2_languages",
+        element: <routes.PLanguages/>
       },
       {
         path:"p3_calculator",

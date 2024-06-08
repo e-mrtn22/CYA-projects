@@ -2,15 +2,21 @@ import { Outlet } from 'react-router-dom'
 
 import './root.css'
 
-import { Navbar } from '../components/Navbar/Navbar'
+import { DropdownMenu } from '../components/DropdownMenu/DropdownMenu'
 
 export default function Root() {
   return (
     <div className='app'>
-      <Navbar/>
+      <header>
+        <h1>CYA Proyects</h1>
+        <DropdownMenu/>
+      </header>
       <main>
         <Outlet/>
       </main>
+      <footer>
+        <p>Made by Edgar Joel Martín Melián</p>
+      </footer>
     </div>
   )
 }

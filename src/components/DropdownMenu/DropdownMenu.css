@@ -1,0 +1,20 @@
+nav {
+  overflow: hidden;
+  width: 100%;
+  margin: 5px 0;
+}
+
+
+ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  column-gap: 5px;
+}
+
+.navbarItem {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.14);
+  border-radius: 25px;
+  text-align: center;
+}
