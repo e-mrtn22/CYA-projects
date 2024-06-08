@@ -30,14 +30,18 @@ export function DropdownMenu() {
         <div className='showZone'>
           <label className='dropdownLabel'>Projects</label>
           <button className='dropdownButton' onClick={toggleDropdown}>
-            {isDropdownOpen ? 'V' : '<'}
+            {isDropdownOpen ? 
+              <img src='/icons/arrowDropDown.svg' alt='dropdown to Bottom icon'></img> 
+              : 
+              <img src='/icons/arrowDropLeft.svg' alt='dropdown to Left icon'></img>}
           </button>
         </div>
         <nav>
           {isDropdownOpen && (
             <ul className='navList'>
               {menuItems.map((item) => (
-                <Link 
+                <Link
+                  key={item.value}
                   to={item.value}
                   onClick={() => closeDropdown()}
                 >

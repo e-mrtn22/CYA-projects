@@ -8,7 +8,7 @@ export default function Root() {
   return (
     <div className='app'>
       <header>
-        <h1>CYA Proyects</h1>
+        <h1> CYA Proyects </h1>
         <DropdownMenu/>
       </header>
       <main>
