@@ -1,12 +1,6 @@
 import './Chain.css'
 
-interface Symbol {
-  data: string
-}
-
-interface Alphabet {
-  values: Symbol[]
-}
+import { Alphabet, Symbol } from '../../types'
 
 interface ChainProps {
   readonly alphabet: Alphabet

@@ -21,7 +21,6 @@ nav {
   cursor: pointer;
   width: 40px;
   height: 40px;
-  font-size: 18px;
   align-items: center;
 }
 
@@ -53,7 +52,7 @@ nav {
 }
 
 .navItem:hover {
-  background-color: #7a42a5;
+  background-color: #8257a3;
   color: white;
 }
 
