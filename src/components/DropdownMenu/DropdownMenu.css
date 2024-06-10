@@ -31,6 +31,7 @@ nav {
 
 .navList {
   overflow-y: scroll;
+  scrollbar-width: none;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -41,8 +42,6 @@ nav {
   position: fixed;
   padding: 0 5px;
   top: 75px;
-  overflow-y: auto;
-  scrollbar-width: none;
 }
 
 .navItem {
