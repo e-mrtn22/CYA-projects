@@ -22,3 +22,24 @@
   width: 100%;
   display: flex;
 }
+
+.draggableChain {
+  background-color: #5c068c;
+  min-width: 120px;
+  max-width: max-content;
+  height: 50px;
+}
+
+.symbolContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
+
+.symbolChain {
+  background-color: #7a42a5;
+}
+
+.symbolChain:nth-child(even) {
+  background-color: #5c068c;
+}

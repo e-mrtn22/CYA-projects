@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Symbol, Alphabet } from '../../types'
+import { Symbol } from '../../types'
 
 import './p01_strings.css'
 
@@ -12,26 +12,35 @@ const representation = {
 
 export function PStrings() {
 
-  const [chain, setChain] = useState<Symbol[]>([])
   const [alphabet, setAlphabet] = useState<Symbol[]>([])
-
   const [alphabetInputValue, setAlphabetInputValue] = useState('')
-
-  const addInputSymbolToAlphabet = (new_symbol: Symbol) => {
-    setAlphabet([...alphabet, new_symbol])
-  }
 
   const handleAddButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (alphabetInputValue.trim().length > 0) {
-      const new_symbol : Symbol = {data: alphabetInputValue} 
+    const symbol_data = alphabetInputValue.trim()
+    if (symbol_data.length > 0 && !alphabet.some((symbol) => symbol.data === symbol_data)) {
+      const new_symbol : Symbol = {data: symbol_data} 
       setAlphabet([...alphabet, new_symbol])
-      setAlphabetInputValue('')
     }
+    setAlphabetInputValue('')
   }
 
+  const [chain, setChain] = useState<Symbol[]>([])
+
+  const handleSymbolDragStart = (event: React.DragEvent<HTMLSpanElement>, symbol: Symbol) => {
+    event.dataTransfer.setData('text/plain', symbol.data)
+  }
+
+  const handleChainDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const symbol_data = event.dataTransfer.getData('text/plain');
+    const new_symbol: Symbol = {data: symbol_data};
+    setChain([...chain, new_symbol])
+  }
+
+
   return (
-    <>
+    <div>
       <section className='alphabetCreator'>
         <h2>Alphabet</h2>
         <form className='newSymbolForm'>
@@ -45,16 +54,44 @@ export function PStrings() {
             <img src='/icons/plus.svg' alt='Add symbol icon'></img> 
           </button>
         </form>
-        <text>
-          <ul className='alphabet'>
-            {`${representation.alphabet} = {`}
-            {alphabet.map((symbol, index) => (
-              <li key={index}>{`${symbol.data}${index < alphabet.length - 1 ? ',':''}`}</li>
-            ))}
-            {`}`}
-          </ul>
-        </text>
+        <div>
+          <div className='alphabet'>
+            <strong>
+              {`${representation.alphabet} =`}
+              <span>{`{`}</span>
+            </strong>
+            <div className='symbolContainer'>
+              {alphabet.map((symbol, index) => (
+                <span key={index} draggable onDragStart={(event) => handleSymbolDragStart(event, symbol)}>
+                  {`${symbol.data}`}
+                </span>
+              ))}
+            </div>
+            <strong><span>{`}`}</span></strong>
+          </div>
+        </div>
       </section>
-    </>
+      <section className='chain'>
+        <h2>Chain</h2>
+        <div 
+          className='draggableChain'
+          onDragOver={(event) => event.preventDefault()}
+          onDrop={handleChainDrop}
+        >
+          {chain.length !== 0 ? 
+            chain.map((symbol, index) => (
+              <span className='symbolChain' key={index}>
+                {`${symbol.data}`}
+              </span>
+            ))
+            :
+            (<p>
+              <span>{`${representation.empty_chain}`}</span>
+              Drag Symbols from the Alphabet to the container to form a Chain
+            </p>)}
+        </div>
+
+      </section>
+    </div>
   )
 }
