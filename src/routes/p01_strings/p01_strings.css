@@ -1,4 +1,4 @@
-.alphabetCreator {
+.alphabetCreator,.chain {
   width: 100%;
   height: 100%;
   padding: 5px 5px 10px 5px;
@@ -11,6 +11,7 @@
 }
 
 .newSymbolForm {
+  padding: 0 15px;
   display: flex;
   input {
     background-color: #00000020;
@@ -25,6 +26,7 @@
 }
 
 .alphabet {
+  padding: 0 15px;
   width: 100%;
   height: 100%;
   display: grid;
@@ -37,14 +39,20 @@
 }
 
 .chainContainer {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.chainBox {
+  margin: 0 auto;
   background-color: #222222;
   padding: 0 10px;
-  min-width: 120px;
-  max-width: 90%;
+  width: 100%;
   height: 100%;
   border: solid 1px black;
   border-radius: 10px;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   row-gap: 1px;
@@ -103,4 +111,9 @@
     font-size: small;
     color: #5a5a5a;
   }
+}
+
+.delButton{
+  width: 40px;
+  height: 40px;
 }

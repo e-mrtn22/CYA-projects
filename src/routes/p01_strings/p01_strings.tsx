@@ -61,6 +61,10 @@ export function PStrings() {
     setChain([...chain, symbol])
   }
 
+  const removeLastSymbolFromChain = () => {
+    setChain((prev_chain) => prev_chain.slice(0,-1))
+  }
+
 
 
   return (
@@ -97,20 +101,23 @@ export function PStrings() {
       </section>
       <section className='chain'>
         <h2>Chain</h2>
-        <div 
-          className='chainContainer'
-        >
-          {chain.length !== 0 ? 
-            chain.map((symbol, index) => (
-              <span className='symbolChain' key={index}>
-                {`${symbol.data}`}
-              </span>
-            ))
-            :
-            (<div className='emptyChainText'>
-              <span>{`${representation.empty_chain}`}</span>
-              <p>{`(Click on the Symbols from the Alphabet to form a chain)`}</p>
-            </div>)}
+        <div className='chainContainer'>
+          <div className='chainBox'>
+            {chain.length !== 0 ? 
+              chain.map((symbol, index) => (
+                <label className='symbolChain' key={index}>
+                  {`${symbol.data}`}
+                </label>
+              ))
+              :
+              (<div className='emptyChainText'>
+                <span>{`${representation.empty_chain}`}</span>
+                <p>{`(Click on the Symbols from the Alphabet to form a chain)`}</p>
+              </div>)}
+          </div>
+          <button className='delButton' onClick={removeLastSymbolFromChain}>
+            <img src='/icons/backspace.svg' alt='Backspace icon'></img>
+          </button>
         </div>
       </section>
     </div>
