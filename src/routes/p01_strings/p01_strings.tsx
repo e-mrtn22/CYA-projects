@@ -2,13 +2,8 @@ import { useState } from 'react'
 import { Symbol } from '../../types'
 
 import './p01_strings.css'
-
-const representation = {
-  symbol: 'σ',
-  alphabet: 'Σ',
-  chain: 'w',
-  empty_chain: 'λ',
-}
+import { useChain } from '../../hooks/useChain'
+import { representation } from '../../consts'
 
 const spanish_alphabet:Symbol[] = [
   {data: 'a'},
@@ -55,17 +50,8 @@ export function PStrings() {
     setAlphabetInputValue('')
   }
 
-  const [chain, setChain] = useState<Symbol[]>([])
-
-  const addSymbolToChain = (symbol:Symbol) => {
-    setChain([...chain, symbol])
-  }
-
-  const removeLastSymbolFromChain = () => {
-    setChain((prev_chain) => prev_chain.slice(0,-1))
-  }
-
-
+  const chain = useChain();
+  chain.preffixs()
 
   return (
     <div>
@@ -89,7 +75,7 @@ export function PStrings() {
           </label>
           <div className='symbolsContainer'>
             {alphabet.map((symbol, index) => (
-              <div key={index} className='alphabetSymbol' onClick={(event) => {event.preventDefault(); addSymbolToChain(symbol)}}>
+              <div key={index} className='alphabetSymbol' onClick={(event) => {event.preventDefault(); chain.insert(symbol, chain.size())}}>
                 <p key={index}>
                   {`${symbol.data}`}
                 </p>
@@ -103,8 +89,8 @@ export function PStrings() {
         <h2>Chain</h2>
         <div className='chainContainer'>
           <div className='chainBox'>
-            {chain.length !== 0 ? 
-              chain.map((symbol, index) => (
+            {chain.chain.length !== 0 ? 
+              chain.chain.map((symbol, index) => (
                 <label className='symbolChain' key={index}>
                   {`${symbol.data}`}
                 </label>
@@ -115,11 +101,14 @@ export function PStrings() {
                 <p>{`(Click on the Symbols from the Alphabet to form a chain)`}</p>
               </div>)}
           </div>
-          <button className='delButton' onClick={removeLastSymbolFromChain}>
+          <button className='delButton' onClick={() => chain.remove(chain.size() - 1)}>
             <img src='/icons/backspace.svg' alt='Backspace icon'></img>
           </button>
         </div>
       </section>
+      <main>
+        
+      </main>
     </div>
   )
 }

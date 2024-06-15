@@ -14,13 +14,20 @@
 }
 
 * {
+  --base-color: #5c068c;
+  --a-color: #8a0eaf;
+  --b-color: #b33dda;
+  --c-color: #e67ef2;
+  --d-color: #f7c7ff;
+  --e-color: #1a1a1a;
+
   margin: 0;
   padding: 0;
   outline: none;
   border: none;
   text-decoration: none;
   box-sizing: border-box;
-  }
+}
 
 body {
   min-width: 320px;

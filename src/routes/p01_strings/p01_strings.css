@@ -8,6 +8,8 @@
   flex-direction: column;
   row-gap: 5px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6a737b #f8f9fa;
 }
 
 .newSymbolForm {

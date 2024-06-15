@@ -5,3 +5,7 @@ export type Symbol = {
 export type Alphabet = {
   values: Symbol[]
 }
+
+export type Chain = {
+  value: Symbol[]
+}
